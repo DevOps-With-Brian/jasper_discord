@@ -21,6 +21,8 @@ class MyClient(discord.Client):
             difussion_command = message.content.split(" ", 1)[1]
             print(difussion_command)
 
+            await message.reply("Ok give me just a min to process that...", mention_author=True)
+
             model = replicate.models.get("stability-ai/stable-diffusion")
             version = model.versions.get("db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf")
 
