@@ -20,6 +20,7 @@ class MyClient(discord.Client):
         if message.content.startswith('!diffusion'):
             difussion_command = message.content.split(" ", 1)[1]
             print(difussion_command)
+            print(message.channel)
 
             await message.reply("Ok give me just a min to process that...", mention_author=True)
 
