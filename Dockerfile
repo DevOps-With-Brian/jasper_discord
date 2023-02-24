@@ -3,6 +3,7 @@ FROM python:3.11.1-alpine
 WORKDIR /app
 
 ENV DISCORD_TOKEN=""
+ENV REPLICATE_API_TOKEN=""
 ENV RASA_URL=""
 
 COPY requirements.txt requirements.txt
