@@ -16,11 +16,9 @@ class MyClient(discord.Client):
         # we do not want the bot to reply to itself
         if message.author.id == self.user.id:
             return
+            
 
-        print(message.content)
-        print(message.channel)
-
-        if message.content.startswith('!diffusion') and message.channel == 'diffusion-generation':
+        if (message.content.startswith('!diffusion') and message.channel == 'diffusion-generation'):
             difussion_command = message.content.split(" ", 1)[1]
             print(difussion_command)
 
