@@ -15,6 +15,10 @@ class MyClient(discord.Client):
         if message.author.id == self.user.id:
             return
 
+        if message.content.startswith('!diffusion'):
+            difussion_command = message.content
+            print(difussion_command)
+
         if message.content.startswith('<@1078452054084825220>'):
             jasper_url = os.getenv('RASA_URL')
             discord_message = message.content.split(" ", 1)[1]
