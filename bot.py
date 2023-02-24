@@ -57,7 +57,7 @@ class MyClient(discord.Client):
                     'guidance_scale': 7.5,
 
                     # Choose a scheduler.
-                    'scheduler': "DPMSolverMultistep",
+                    'scheduler': "K_EULER",
 
                     # Random seed. Leave blank to randomize the seed
                     # 'seed': ...,
