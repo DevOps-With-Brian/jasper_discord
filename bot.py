@@ -57,7 +57,7 @@ class MyClient(discord.Client):
             # https://replicate.com/stability-ai/stable-diffusion/versions/db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf#output-schema
             output = version.predict(**inputs)
             print(output)
-            await message.reply(output[1], mention_author=True)
+            await message.reply(output[0], mention_author=True)
 
         if message.content.startswith('<@1078452054084825220>'):
             jasper_url = os.getenv('RASA_URL')
