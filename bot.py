@@ -17,6 +17,9 @@ class MyClient(discord.Client):
         if message.author.id == self.user.id:
             return
 
+        print(message.content)
+        print(message.channel)
+
         if message.content.startswith('!diffusion') and message.channel == 'diffusion-generation':
             difussion_command = message.content.split(" ", 1)[1]
             print(difussion_command)
