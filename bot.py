@@ -17,50 +17,49 @@ class MyClient(discord.Client):
         if message.author.id == self.user.id:
             return
 
-        if message.content.startswith('!diffusion'):
-            if message.channel == 'diffusion-generation':
-                difussion_command = message.content.split(" ", 1)[1]
-                print(difussion_command)
+        if message.content.startswith('!diffusion') and message.channel == 'diffusion-generation':
+            difussion_command = message.content.split(" ", 1)[1]
+            print(difussion_command)
 
-                await message.reply("Ok give me just a min to process that...", mention_author=True)
+            await message.reply("Ok give me just a min to process that...", mention_author=True)
 
-                model = replicate.models.get("stability-ai/stable-diffusion")
-                version = model.versions.get("db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf")
+            model = replicate.models.get("stability-ai/stable-diffusion")
+            version = model.versions.get("db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf")
 
-                # https://replicate.com/stability-ai/stable-diffusion/versions/db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf#input
-                inputs = {
-                    # Input prompt
-                    'prompt': difussion_command,
+            # https://replicate.com/stability-ai/stable-diffusion/versions/db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf#input
+            inputs = {
+                # Input prompt
+                'prompt': difussion_command,
 
-                    # pixel dimensions of output image
-                    'image_dimensions': "768x768",
+                # pixel dimensions of output image
+                'image_dimensions': "768x768",
 
-                    # Specify things to not see in the output
-                    # 'negative_prompt': ...,
+                # Specify things to not see in the output
+                # 'negative_prompt': ...,
 
-                    # Number of images to output.
-                    # Range: 1 to 4
-                    'num_outputs': 1,
+                # Number of images to output.
+                # Range: 1 to 4
+                'num_outputs': 1,
 
-                    # Number of denoising steps
-                    # Range: 1 to 500
-                    'num_inference_steps': 50,
+                # Number of denoising steps
+                # Range: 1 to 500
+                'num_inference_steps': 50,
 
-                    # Scale for classifier-free guidance
-                    # Range: 1 to 20
-                    'guidance_scale': 7.5,
+                # Scale for classifier-free guidance
+                # Range: 1 to 20
+                'guidance_scale': 7.5,
 
-                    # Choose a scheduler.
-                    'scheduler': "DPMSolverMultistep",
+                # Choose a scheduler.
+                'scheduler': "DPMSolverMultistep",
 
-                    # Random seed. Leave blank to randomize the seed
-                    # 'seed': ...,
-                }
+                # Random seed. Leave blank to randomize the seed
+                # 'seed': ...,
+            }
 
-                # https://replicate.com/stability-ai/stable-diffusion/versions/db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf#output-schema
-                output = version.predict(**inputs)
-                print(output)
-                await message.reply(output[0], mention_author=True)
+            # https://replicate.com/stability-ai/stable-diffusion/versions/db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf#output-schema
+            output = version.predict(**inputs)
+            print(output)
+            await message.reply(output[0], mention_author=True)
 
         if message.content.startswith('<@1078452054084825220>'):
             jasper_url = os.getenv('RASA_URL')
