@@ -17,11 +17,10 @@ class MyClient(discord.Client):
         if message.author.id == self.user.id:
             return
 
-        print(message.content)
-        print(message.channel)
+        if (message.channel.name == 'diffusion_generation'):
 
-
-        if ((message.content.startswith('!diffusion')) and (message.channel == 'diffusion-generation')):
+            if message.content.startswith('!diffusion'):
+                print(message.content)
                 diffussion_command = message.content.split(" ", 1)[1]
                 print(diffussion_command)
 
@@ -64,8 +63,8 @@ class MyClient(discord.Client):
                 output = version.predict(**inputs)
                 print(output)
                 await message.channel.send(output[0], mention_author=True)
-        else:
-            await message.reply("Sorry this command can only be ran from the #diffusion-generation channel.", mention_author=True)
+            else:
+                await message.reply("Sorry this command can only be ran from the #diffusion-generation channel.", mention_author=True)
 
         if message.content.startswith('<@1078452054084825220>'):
             jasper_url = os.getenv('RASA_URL')
