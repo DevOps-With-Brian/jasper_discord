@@ -26,6 +26,11 @@ spec:
               secretKeyRef:
                 name: jasper-prd
                 key: DISCORD_TOKEN
+          - name: REPLICATE_API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: jasper-prd
+                key: REPLICATE_API_TOKEN
           - name: RASA_URL
             valueFrom:
               secretKeyRef:
