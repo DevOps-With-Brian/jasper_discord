@@ -19,7 +19,7 @@ class MyClient(discord.Client):
 
         if (message.channel.name != 'diffusion_generation'):
              if message.content.startswith('!diffusion'):
-                await message.channel.send("Sorry that command cannot be used in this channel.", mention_author=True)
+                await message.channel.send("Sorry that command can only be used in #diffusion_generation channel.", mention_author=True)
                 
 
         if (message.channel.name == 'diffusion_generation'):
