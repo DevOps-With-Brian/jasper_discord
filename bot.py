@@ -17,10 +17,9 @@ class MyClient(discord.Client):
         if message.author.id == self.user.id:
             return
 
-        if message.content.startswith('!diffusion'):
+        if message.content.startswith('!diffusion') and message.channel == 'diffusion-generation':
             difussion_command = message.content.split(" ", 1)[1]
             print(difussion_command)
-            print(message.channel)
 
             await message.reply("Ok give me just a min to process that...", mention_author=True)
 
