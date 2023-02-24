@@ -66,6 +66,8 @@ class MyClient(discord.Client):
                 print(output)
                 await message.reply(output[0], mention_author=True)
             else:
+                print(message.channel)
+                print(message.__dict__)
                 await message.reply("Sorry this command can only be ran in the #diffusion-generation channel.", mention_author=True)
 
         if message.content.startswith('<@1078452054084825220>'):
