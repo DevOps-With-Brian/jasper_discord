@@ -5,6 +5,7 @@ import json
 import replicate
 
 discord_token = os.getenv("DISCORD_TOKEN")
+REPLICATE_API_TOKEN = os.getenv("REPLICATE_API_TOKEN")
 
 class MyClient(discord.Client):
     async def on_ready(self):
