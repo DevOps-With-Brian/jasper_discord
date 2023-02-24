@@ -16,11 +16,14 @@ class MyClient(discord.Client):
         # we do not want the bot to reply to itself
         if message.author.id == self.user.id:
             return
-            
 
-        if (message.content.startswith('!diffusion') and message.channel == 'diffusion-generation'):
-            difussion_command = message.content.split(" ", 1)[1]
-            print(difussion_command)
+        print(message.content)
+        print(message.channel)
+
+
+        if ((message.content.startswith('!diffusion')) and (message.channel == 'diffusion-generation')):
+            diffussion_command = message.content.split(" ", 1)[1]
+            print(diffussion_command)
 
             await message.reply("Ok give me just a min to process that...", mention_author=True)
 
@@ -30,7 +33,7 @@ class MyClient(discord.Client):
             # https://replicate.com/stability-ai/stable-diffusion/versions/db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf#input
             inputs = {
                 # Input prompt
-                'prompt': difussion_command,
+                'prompt': diffussion_command,
 
                 # pixel dimensions of output image
                 'image_dimensions': "768x768",
