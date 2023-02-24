@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jasper-discord
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: jasper-discord
+  template:
+    metadata:
+      labels:
+        app: jasper-discord
+    spec:
+      containers:
+      - name: jasper-discord 
+        image: "devopswithbrian/jasper-discord:latest"
+        imagePullPolicy: Always
+        tty: true
+        env:
+          - name: PYTHONUNBUFFERED
+            value: "0"
+          - name: DISCORD_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: jasper-prd
+                key: DISCORD_TOKEN
+          - name: RASA_URL
+            valueFrom:
+              secretKeyRef:
+                name: jasper-prd
+                key: RASA_URL
