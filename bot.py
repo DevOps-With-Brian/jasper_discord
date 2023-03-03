@@ -12,7 +12,7 @@ class MyClient(discord.Client):
         if message.content.startswith('<@1078452054084825220>'):
             if message.author.id == self.user.id:
                 return
-            jasper_url = os.getenv('RASA_URL_LOCAL')
+            jasper_url = os.getenv('RASA_URL')
 
             discord_message = message.content.split(" ", 1)[1]
             headers = {
