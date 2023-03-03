@@ -68,7 +68,8 @@ class MyClient(discord.Client):
             jasper_response = self.call_rasa(message)
             if jasper_response == "oos":
                 await message.reply("Sorry I don't know how to answer that yet, but I'm learning", mention_author=True)
-            await message.reply(jasper_response, mention_author=True)
+            else:
+                await message.reply(jasper_response, mention_author=True)
 
 
         if (message.channel.name != 'diffusion_generation'):
