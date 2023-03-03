@@ -66,7 +66,7 @@ class MyClient(discord.Client):
         
         if message.content.startswith('<@1078452054084825220>'):
             jasper_response = self.call_rasa(message)
-            if jasper_response != "oos":
+            if jasper_response == "oos":
                 await message.reply("Sorry I don't know how to answer that yet, but I'm learning", mention_author=True)
             await message.reply(jasper_response, mention_author=True)
 
