@@ -27,8 +27,6 @@ class MyClient(discord.Client):
             response = requests.post(jasper_url, headers=headers, json=json_data)
             parsed = json.loads(response.content)
 
-            if parsed == []:
-                return
             jasper_response = parsed[0]['text']
             return jasper_response
         else:
@@ -48,8 +46,6 @@ class MyClient(discord.Client):
             response = requests.post(jasper_url, headers=headers, json=json_data)
             parsed = json.loads(response.content)
 
-            if parsed == []:
-                return
             jasper_response = parsed[0]['text']
             return jasper_response
 
@@ -64,21 +60,13 @@ class MyClient(discord.Client):
         
         if (str(message.channel.id) == "1078462751309049896" and message.content.startswith('<@1078452054084825220>') == False):
             jasper_response = self.call_rasa(message)
-            oos = False
-            if jasper_response == "oos":
-                oos = True
-                
-            if oos == False:
+            
+            if jasper_response != "oos":
                 await message.reply(jasper_response, mention_author=True)
         
         if message.content.startswith('<@1078452054084825220>'):
             jasper_response = self.call_rasa(message)
-            oos = False
-            if jasper_response == "oos":
-                oos = True
-
-            if oos == False:
-                await message.reply(jasper_response, mention_author=True)
+            await message.reply(jasper_response, mention_author=True)
 
 
         if (message.channel.name != 'diffusion_generation'):
