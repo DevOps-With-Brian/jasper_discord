@@ -32,7 +32,7 @@ class MyClient(discord.Client):
         else:
             if message.author.id == self.user.id:
                 return
-            jasper_url = os.getenv('RASA_URL_LOCAL')
+            jasper_url = os.getenv('RASA_URL')
             discord_message = message.content
             headers = {
                 'Content-Type': 'application/json',
