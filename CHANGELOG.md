@@ -1,3 +1,10 @@
+## 0.2.0 (2023-03-04)
+
+### Feat
+
+- **commitizen**: adding in commitizen auto versioning (#7)
+- **commitizen**: adding in commitizen auto versioning (#6)
+
 ## 0.1.0 (2023-03-03)
 
 ### Feat
