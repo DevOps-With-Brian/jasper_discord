@@ -7,7 +7,7 @@ on:
 
 jobs:
   validate-cc:
-    name: Training and Testing
+    name: Validating Conventional Commit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
