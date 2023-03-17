@@ -27,6 +27,8 @@ class MyClient(discord.Client):
             response = requests.post(jasper_url, headers=headers, json=json_data)
             parsed = json.loads(response.content)
 
+            print(parsed)
+            print(parsed)[0]
             jasper_response = parsed[0]['text']
             print(jasper_response)
             return jasper_response
