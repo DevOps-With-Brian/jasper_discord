@@ -61,7 +61,9 @@ class MyClient(discord.Client):
         if (str(message.channel.id) == "1078462751309049896" and message.content.startswith('<@1078452054084825220>') == False):
             jasper_response = self.call_rasa(message)
             
-    
+            if jasper_response != "oos":
+                await message.reply(jasper_response, mention_author=True)
+
 
         if (message.channel.name != 'diffusion_generation'):
              if message.content.startswith('!diffusion'):
