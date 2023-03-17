@@ -27,8 +27,7 @@ class MyClient(discord.Client):
             response = requests.post(jasper_url, headers=headers, json=json_data)
             parsed = json.loads(response.content)
 
-            print(parsed)
-            print(parsed)[0]
+            print("The parsed var is: {}".format(parsed))
             jasper_response = parsed[0]['text']
             print(jasper_response)
             return jasper_response
@@ -48,6 +47,8 @@ class MyClient(discord.Client):
 
             response = requests.post(jasper_url, headers=headers, json=json_data)
             parsed = json.loads(response.content)
+            
+            print("The parsed var is: {}".format(parsed))
 
             jasper_response = parsed[0]['text']
             return jasper_response
