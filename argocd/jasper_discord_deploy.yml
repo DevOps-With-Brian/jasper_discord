@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: jasper-discord 
-        image: "devopswithbrian/jasper-discord:0.3.0"
+        image: "devopswithbrian/jasper-discord:0.4.0"
         imagePullPolicy: Always
         tty: true
         env:
