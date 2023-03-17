@@ -28,6 +28,7 @@ class MyClient(discord.Client):
             parsed = json.loads(response.content)
 
             jasper_response = parsed[0]['text']
+            print(jasper_response)
             return jasper_response
         else:
             if message.author.id == self.user.id:
@@ -58,12 +59,25 @@ class MyClient(discord.Client):
         if message.author.id == self.user.id:
             return
         
+        print(message.channel)
+        print(message.channel.id)
+        print(message.content)
+        
+        # Bot Testing Jasper
         if (str(message.channel.id) == "1078462751309049896" and message.content.startswith('<@1078452054084825220>') == False):
             jasper_response = self.call_rasa(message)
-            
-            if jasper_response != "oos":
-                await message.reply(jasper_response, mention_author=True)
+            await message.reply(jasper_response, mention_author=True)
 
+        # Talk-To-Jasper Open Channel
+        if (str(message.channel.id) == "1086251579063160903" and message.content.startswith('<@1078452054084825220>') == False):
+            jasper_response = self.call_rasa(message)
+            await message.reply(jasper_response, mention_author=True)
+
+        # If mentioning Jasper
+        if message.content.startswith('<@1078452054084825220>'):
+            jasper_response = self.call_rasa(message)
+        else:
+            await message.reply(jasper_response, mention_author=True)
 
         if (message.channel.name != 'diffusion_generation'):
              if message.content.startswith('!diffusion'):
