@@ -1,3 +1,9 @@
+## 0.3.0 (2023-03-17)
+
+### Feat
+
+- **gpt**: updating the oos since now gpt will respond (#9)
+
 ## 0.2.0 (2023-03-04)
 
 ### Feat
