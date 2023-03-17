@@ -1,3 +1,9 @@
+## 0.4.0 (2023-03-17)
+
+### Feat
+
+- **gpt**: fixing gpt fallback issue
+
 ## 0.3.0 (2023-03-17)
 
 ### Feat
