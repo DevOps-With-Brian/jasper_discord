@@ -76,7 +76,6 @@ class MyClient(discord.Client):
         # If mentioning Jasper
         if message.content.startswith('<@1078452054084825220>'):
             jasper_response = self.call_rasa(message)
-        else:
             await message.reply(jasper_response, mention_author=True)
 
         if (message.channel.name != 'diffusion_generation'):
